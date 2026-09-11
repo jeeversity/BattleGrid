@@ -1,268 +1,809 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BattleGrid | Esports Tournaments</title>
+    <title>BattleGrid | India's Esports Arena</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #070707;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 75px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #090909;
+            border-bottom: 1px solid #202020;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ff3b00;
+        }
+
+        .navbar nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar nav a {
+            color: #aaa;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .navbar nav a:hover {
+            color: #ff4b16;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-btn,
+        .register-btn {
+            padding: 10px 18px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .login-btn {
+            border: 1px solid #333;
+            color: #ddd;
+        }
+
+        .register-btn {
+            background: #ff3b00;
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            padding: 80px 7%;
+            background:
+                radial-gradient(circle at 80% 40%, rgba(255,59,0,.18), transparent 35%),
+                linear-gradient(120deg, #080808, #111);
+            border-bottom: 1px solid #191919;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .tag {
+            color: #ff4b16;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 8vw, 95px);
+            line-height: .9;
+            margin: 20px 0;
+            font-weight: 950;
+        }
+
+        .hero h1 span {
+            color: #ff3b00;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            color: #999;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            padding: 15px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .primary-btn {
+            background: #ff3b00;
+        }
+
+        .secondary-btn {
+            border: 1px solid #333;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 75px 7%;
+        }
+
+        .section-label {
+            color: #ff4b16;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin: 8px 0 35px;
+        }
+
+        /* TOURNAMENTS */
+        .tournament-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tournament-card {
+            background: #101010;
+            border: 1px solid #242424;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: .25s;
+        }
+
+        .tournament-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff3b00;
+        }
+
+        .card-banner {
+            height: 145px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-end;
+            background:
+                linear-gradient(135deg, rgba(255,59,0,.8), #171717 70%);
+        }
+
+        .card-banner.pubg {
+            background:
+                linear-gradient(135deg, #444, #111 70%);
+        }
+
+        .game-name {
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 9px;
+            border-radius: 5px;
+            background: rgba(255,59,0,.12);
+            color: #ff5728;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .card-body h3 {
+            margin: 15px 0 8px;
+            font-size: 21px;
+        }
+
+        .mode {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .card-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .info {
+            background: #090909;
+            padding: 11px;
+            border-radius: 7px;
+        }
+
+        .info small {
+            display: block;
+            color: #666;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+        .info strong {
+            font-size: 13px;
+        }
+
+        .join-btn {
+            display: block;
+            text-align: center;
+            padding: 13px;
+            background: #ff3b00;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* GAMES */
+        .games-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .game-box {
+            min-height: 230px;
+            padding: 30px;
+            border: 1px solid #292929;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(135deg, #181818, #080808);
+        }
+
+        .game-box.freefire {
+            background:
+                linear-gradient(135deg, rgba(255,59,0,.35), #090909 70%);
+        }
+
+        .game-box h3 {
+            font-size: 30px;
+            margin: 0 0 8px;
+        }
+
+        .game-box p {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .game-link {
+            color: #ff4b16;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature {
+            padding: 28px;
+            background: #0e0e0e;
+            border: 1px solid #222;
+            border-radius: 12px;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+        }
+
+        .feature h3 {
+            margin: 18px 0 8px;
+        }
+
+        .feature p {
+            color: #777;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .cta {
+            margin: 20px 7% 80px;
+            padding: 55px;
+            text-align: center;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #ff3b00, #a82000);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin: 0 0 12px;
+        }
+
+        .cta p {
+            color: #eee;
+            margin-bottom: 25px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 13px 25px;
+            background: #090909;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 7%;
+            border-top: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            color: #777;
+            font-size: 12px;
+        }
+
+        footer .logo {
+            color: white;
+        }
+
+        footer div:last-child {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 850px) {
+            .navbar nav {
+                display: none;
+            }
+
+            .tournament-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-buttons .login-btn {
+                display: none;
+            }
+
+            .hero {
+                padding: 65px 20px;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .section {
+                padding: 55px 20px;
+            }
+
+            .cta {
+                margin: 10px 20px 60px;
+                padding: 40px 20px;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+<header class="navbar">
 
-    <header class="navbar">
+    <div class="logo">
+        BATTLE<span>GRID</span>
+    </div>
 
-        <div class="logo">
-            BATTLE<span>GRID</span>
-        </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="freefire.html">Tournaments</a>
+        <a href="#">Leaderboard</a>
+    </nav>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="freefire.html">Tournaments</a>
-            <a href="#">Leaderboard</a>
-        </nav>
+    <div class="nav-buttons">
+        <a href="login.html" class="login-btn">LOGIN</a>
+        <a href="register.html" class="register-btn">REGISTER</a>
+    </div>
 
-        <div class="nav-buttons">
+</header>
 
-            <a href="login.html" class="login-btn">
-                Login
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="tag">🔥 INDIA'S ESPORTS ARENA</p>
+
+        <h1>
+            PLAY.<br>
+            <span>COMPETE.</span><br>
+            WIN.
+        </h1>
+
+        <p class="hero-text">
+            Enter the BattleGrid arena. Compete in Free Fire
+            and PUBG tournaments, prove your skills and climb
+            the leaderboard.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="freefire.html" class="primary-btn">
+                EXPLORE TOURNAMENTS →
             </a>
 
-            <a href="register.html" class="register-btn">
-                Register
+            <a href="register.html" class="secondary-btn">
+                CREATE ACCOUNT
             </a>
 
         </div>
 
-    </header>
+    </div>
+
+</section>
 
 
-    <!-- ================= HERO ================= -->
+<!-- LIVE / UPCOMING -->
 
-    <section class="hero">
+<section class="section">
 
-        <div class="hero-content">
+    <p class="section-label">BATTLEGRID ARENA</p>
 
-            <p class="tag">
-                INDIA'S ESPORTS TOURNAMENT PLATFORM
-            </p>
+    <h2 class="section-title">
+        Featured Tournaments
+    </h2>
 
-            <h1>
-                PLAY.
-                <span>COMPETE.</span>
-                WIN.
-            </h1>
+    <div class="tournament-grid">
 
-            <p class="hero-text">
-                Enter the BattleGrid arena. Compete in
-                Free Fire and PUBG tournaments, prove
-                your skills and climb the leaderboard.
-            </p>
+        <div class="tournament-card">
 
-            <div class="hero-buttons">
-
-                <a href="freefire.html" class="primary-btn">
-                    EXPLORE TOURNAMENTS →
-                </a>
-
-                <a href="register.html" class="secondary-btn">
-                    CREATE ACCOUNT
-                </a>
-
+            <div class="card-banner">
+                <span class="game-name">FREE FIRE</span>
             </div>
 
-        </div>
+            <div class="card-body">
 
-    </section>
+                <span class="status">UPCOMING</span>
 
+                <h3>BattleGrid Solo Clash #01</h3>
 
-    <!-- ================= GAMES ================= -->
+                <p class="mode">
+                    Solo • Bermuda
+                </p>
 
-    <section class="games">
+                <div class="card-info">
 
-        <div class="section-heading">
+                    <div class="info">
+                        <small>PRIZE POOL</small>
+                        <strong>₹500</strong>
+                    </div>
 
-            <p>CHOOSE YOUR BATTLE</p>
+                    <div class="info">
+                        <small>ENTRY</small>
+                        <strong>FREE</strong>
+                    </div>
 
-            <h2>
-                Featured Games
-            </h2>
+                    <div class="info">
+                        <small>DATE</small>
+                        <strong>15 SEP</strong>
+                    </div>
 
-        </div>
-
-
-        <div class="game-container">
-
-
-            <!-- FREE FIRE -->
-
-            <div class="game-card freefire">
-
-                <div class="game-overlay">
-
-                    <span>
-                        FREE FIRE
-                    </span>
-
-                    <h3>
-                        Solo • Duo • Squad
-                    </h3>
-
-                    <p>
-                        Compete in tournaments and
-                        fight for the top spot.
-                    </p>
-
-                    <a href="freefire.html">
-                        VIEW TOURNAMENTS →
-                    </a>
+                    <div class="info">
+                        <small>SLOTS</small>
+                        <strong>42 / 50</strong>
+                    </div>
 
                 </div>
 
+                <a href="freefire.html" class="join-btn">
+                    VIEW TOURNAMENT →
+                </a>
+
             </div>
 
+        </div>
 
-            <!-- PUBG -->
 
-            <div class="game-card pubg">
+        <div class="tournament-card">
 
-                <div class="game-overlay">
+            <div class="card-banner">
+                <span class="game-name">FREE FIRE</span>
+            </div>
 
-                    <span>
-                        PUBG
-                    </span>
+            <div class="card-body">
 
-                    <h3>
-                        Competitive Battles
-                    </h3>
+                <span class="status">UPCOMING</span>
 
-                    <p>
-                        Strategic battles and
-                        competitive gameplay.
-                    </p>
+                <h3>BattleGrid Duo War #01</h3>
 
-                    <a href="#">
-                        COMING SOON →
-                    </a>
+                <p class="mode">
+                    Duo • Bermuda
+                </p>
+
+                <div class="card-info">
+
+                    <div class="info">
+                        <small>PRIZE POOL</small>
+                        <strong>₹1,000</strong>
+                    </div>
+
+                    <div class="info">
+                        <small>ENTRY</small>
+                        <strong>FREE</strong>
+                    </div>
+
+                    <div class="info">
+                        <small>DATE</small>
+                        <strong>16 SEP</strong>
+                    </div>
+
+                    <div class="info">
+                        <small>SLOTS</small>
+                        <strong>18 / 25</strong>
+                    </div>
 
                 </div>
 
+                <a href="freefire.html" class="join-btn">
+                    VIEW TOURNAMENT →
+                </a>
+
             </div>
 
+        </div>
+
+
+        <div class="tournament-card">
+
+            <div class="card-banner pubg">
+                <span class="game-name">PUBG</span>
+            </div>
+
+            <div class="card-body">
+
+                <span class="status">COMING SOON</span>
+
+                <h3>BattleGrid PUBG Cup</h3>
+
+                <p class="mode">
+                    Competitive Battles
+                </p>
+
+                <div class="card-info">
+
+                    <div class="info">
+                        <small>PRIZE POOL</small>
+                        <strong>₹2,000</strong>
+                    </div>
+
+                    <div class="info">
+                        <small>ENTRY</small>
+                        <strong>FREE</strong>
+                    </div>
+
+                    <div class="info">
+                        <small>STATUS</small>
+                        <strong>SOON</strong>
+                    </div>
+
+                    <div class="info">
+                        <small>GAME</small>
+                        <strong>PUBG</strong>
+                    </div>
+
+                </div>
+
+                <a href="#" class="join-btn">
+                    COMING SOON
+                </a>
+
+            </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= WHY BATTLEGRID ================= -->
+<!-- GAMES -->
 
-    <section class="features">
+<section class="section">
 
-        <div class="feature">
+    <p class="section-label">CHOOSE YOUR BATTLE</p>
 
-            <div>🏆</div>
+    <h2 class="section-title">
+        Games
+    </h2>
 
-            <h3>
-                Competitive Tournaments
-            </h3>
+    <div class="games-grid">
+
+        <div class="game-box freefire">
+
+            <h3>FREE FIRE</h3>
 
             <p>
-                Join organized tournaments and
-                compete against skilled players.
+                Solo • Duo • Squad
             </p>
 
-        </div>
-
-
-        <div class="feature">
-
-            <div>⚡</div>
-
-            <h3>
-                Simple Registration
-            </h3>
-
-            <p>
-                Create your account quickly and
-                join tournaments with ease.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div>📊</div>
-
-            <h3>
-                Leaderboards
-            </h3>
-
-            <p>
-                Track tournament results and
-                compete for the top position.
-            </p>
-
-        </div>
-
-
-    </section>
-
-
-    <!-- ================= CALL TO ACTION ================= -->
-
-    <section class="cta">
-
-        <h2>
-            READY FOR THE BATTLE?
-        </h2>
-
-        <p>
-            Create your BattleGrid account
-            and enter the arena.
-        </p>
-
-        <a href="register.html">
-            JOIN BATTLEGRID →
-        </a>
-
-    </section>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <div class="logo">
-            BATTLE<span>GRID</span>
-        </div>
-
-        <p>
-            © 2026 BattleGrid. All rights reserved.
-        </p>
-
-        <div>
-
-            <a href="#">
-                Terms & Conditions
-            </a>
-
-            <a href="#">
-                Privacy Policy
+            <a href="freefire.html" class="game-link">
+                EXPLORE FREE FIRE →
             </a>
 
         </div>
 
-    </footer>
+
+        <div class="game-box">
+
+            <h3>PUBG</h3>
+
+            <p>
+                Competitive tournaments coming soon.
+            </p>
+
+            <a href="#" class="game-link">
+                COMING SOON →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <script src="js/app.js"></script>
+<!-- FEATURES -->
+
+<section class="section">
+
+    <p class="section-label">WHY BATTLEGRID</p>
+
+    <h2 class="section-title">
+        Built For Competitive Players
+    </h2>
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">🏆</div>
+
+            <h3>Competitive Tournaments</h3>
+
+            <p>
+                Join exciting tournaments and compete
+                against other players.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">⚡</div>
+
+            <h3>Fast Registration</h3>
+
+            <p>
+                Create your account and join tournaments
+                with a simple registration flow.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">📊</div>
+
+            <h3>Leaderboard</h3>
+
+            <p>
+                Track tournament results and climb
+                the BattleGrid rankings.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <h2>READY TO ENTER THE GRID?</h2>
+
+    <p>
+        Create your BattleGrid account and start competing.
+    </p>
+
+    <a href="register.html">
+        JOIN BATTLEGRID →
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="logo">
+        BATTLE<span>GRID</span>
+    </div>
+
+    <p>
+        © 2026 BattleGrid. All rights reserved.
+    </p>
+
+    <div>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+    </div>
+
+</footer>
+
+
+<script src="js/app.js"></script>
 
 </body>
-
 </html>
