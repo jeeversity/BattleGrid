@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>BattleGrid | Free Fire Esports</title>
 
 <style>
@@ -14,25 +15,25 @@
 }
 
 body{
-    background:#090909;
+    background:#080808;
     color:#fff;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
+
 .navbar{
-    height:70px;
-    padding:0 7%;
+    height:68px;
+    padding:0 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    border-bottom:1px solid #242424;
     background:#0b0b0b;
+    border-bottom:1px solid #252525;
 }
 
 .logo{
-    font-size:22px;
+    font-size:23px;
     font-weight:800;
-    letter-spacing:.5px;
 }
 
 .logo span{
@@ -40,571 +41,91 @@ body{
 }
 
 .back{
-    color:#aaa;
     text-decoration:none;
+    color:#999;
     font-size:14px;
 }
 
 .back:hover{
-    color:#fff;
+    color:white;
 }
 
-/* HERO */
+
+/* ================= MAIN ================= */
+
 .container{
-    width:86%;
+    width:90%;
     max-width:1150px;
     margin:auto;
 }
 
+
+/* ================= HERO ================= */
+
 .hero{
-    margin-top:30px;
-    height:330px;
+    height:310px;
+    margin-top:25px;
     border-radius:16px;
     overflow:hidden;
     position:relative;
 
     background:
-    linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.42)),
-    url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1400&q=80");
+    linear-gradient(90deg,
+    rgba(0,0,0,.94),
+    rgba(0,0,0,.45)),
+    url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1500&q=80");
 
     background-size:cover;
     background-position:center;
+
     border:1px solid #292929;
 }
 
 .hero-content{
     position:absolute;
-    left:35px;
-    bottom:35px;
+    left:32px;
+    bottom:30px;
 }
 
 .badge{
     display:inline-block;
+    background:#ff542f;
     padding:7px 12px;
     border-radius:20px;
-    background:#ff542f;
     font-size:11px;
     font-weight:bold;
     letter-spacing:1px;
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .hero h1{
-    font-size:40px;
+    font-size:39px;
     margin-bottom:8px;
 }
 
 .hero p{
-    color:#bdbdbd;
+    color:#bbb;
     font-size:15px;
 }
 
-/* INFO */
-.info-grid{
+
+/* ================= QUICK INFO ================= */
+
+.quick-info{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:12px;
-    margin-top:18px;
+    margin-top:16px;
 }
 
 .info{
-    border:1px solid #282828;
     background:#101010;
-    padding:18px;
-    border-radius:12px;
+    border:1px solid #292929;
+    border-radius:11px;
+    padding:17px;
 }
 
 .info small{
     display:block;
     color:#777;
-    margin-bottom:7px;
-}
-
-.info strong{
-    font-size:16px;
-}
-
-/* SECTION */
-.section{
-    margin-top:38px;
-}
-
-.section-title{
-    font-size:25px;
-    margin-bottom:18px;
-}
-
-/* MODE */
-.modes{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-}
-
-.mode{
-    background:#101010;
-    border:1px solid #292929;
-    border-radius:14px;
-    padding:25px;
-    transition:.2s;
-}
-
-.mode:hover{
-    border-color:#ff542f;
-    transform:translateY(-2px);
-}
-
-.mode h3{
-    font-size:22px;
-    margin-bottom:6px;
-}
-
-.mode p{
-    color:#888;
-    margin-bottom:20px;
-}
-
-.mode button{
-    width:100%;
-    padding:13px;
-    border:0;
-    border-radius:8px;
-    background:#ff542f;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.mode button:hover{
-    background:#e94725;
-}
-
-/* TOURNAMENT DETAILS */
-.details{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:18px;
-}
-
-.card{
-    background:#101010;
-    border:1px solid #292929;
-    border-radius:14px;
-    padding:22px;
-}
-
-.card h3{
-    margin-bottom:15px;
-}
-
-.card p,
-.card li{
-    color:#999;
-    line-height:1.7;
-}
-
-.card ul{
-    padding-left:20px;
-}
-
-/* REGISTRATION */
-#registration{
-    display:none;
-}
-
-.form-card{
-    max-width:650px;
-    margin:auto;
-    background:#101010;
-    border:1px solid #292929;
-    border-radius:15px;
-    padding:25px;
-}
-
-.form-card h2{
-    margin-bottom:6px;
-}
-
-.form-subtitle{
-    color:#888;
-    margin-bottom:22px;
-}
-
-.player-box{
-    border:1px solid #292929;
-    padding:18px;
-    border-radius:10px;
-    margin-bottom:15px;
-}
-
-.player-box h4{
-    margin-bottom:14px;
-    color:#ff6847;
-}
-
-label{
-    display:block;
-    color:#aaa;
-    font-size:13px;
-    margin-bottom:7px;
-}
-
-input{
-    width:100%;
-    background:#080808;
-    color:white;
-    border:1px solid #303030;
-    padding:13px;
-    border-radius:8px;
-    outline:none;
-    margin-bottom:14px;
-}
-
-input:focus{
-    border-color:#ff542f;
-}
-
-.submit{
-    width:100%;
-    border:0;
-    padding:14px;
-    border-radius:8px;
-    background:#ff542f;
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.submit:hover{
-    background:#e94725;
-}
-
-.success{
-    display:none;
-    text-align:center;
-    padding:20px;
-    border:1px solid #293b2e;
-    background:#0d150f;
-    border-radius:10px;
-    margin-top:18px;
-}
-
-.success h3{
-    color:#5bd477;
-    margin-bottom:10px;
-}
-
-.registration-id{
-    font-size:20px;
-    font-weight:bold;
-    margin-top:8px;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    color:#555;
-    padding:40px 0 25px;
-    font-size:13px;
-}
-
-/* MOBILE */
-@media(max-width:700px){
-
-    .container{
-        width:92%;
-    }
-
-    .hero{
-        height:280px;
-    }
-
-    .hero h1{
-        font-size:29px;
-    }
-
-    .info-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .modes,
-    .details{
-        grid-template-columns:1fr;
-    }
-
-    .navbar{
-        padding:0 4%;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<nav class="navbar">
-    <div class="logo">Battle<span>Grid</span></div>
-    <a href="index.html" class="back">← Back</a>
-</nav>
-
-<main class="container">
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="badge">UPCOMING TOURNAMENT</span>
-            <h1>Free Fire Esports</h1>
-            <p>BattleGrid Free Fire Championship</p>
-        </div>
-    </section>
-
-    <!-- INFO -->
-    <section class="info-grid">
-
-        <div class="info">
-            <small>PRIZE POOL</small>
-            <strong>₹50,000</strong>
-        </div>
-
-        <div class="info">
-            <small>DATE</small>
-            <strong>20 Sept 2026</strong>
-        </div>
-
-        <div class="info">
-            <small>GAME MODE</small>
-            <strong>Solo / Duo</strong>
-        </div>
-
-        <div class="info">
-            <small>STATUS</small>
-            <strong>Registration Open</strong>
-        </div>
-
-    </section>
-
-    <!-- MODE -->
-    <section class="section">
-
-        <h2 class="section-title">Choose Your Mode</h2>
-
-        <div class="modes">
-
-            <div class="mode">
-                <h3>Solo</h3>
-                <p>Compete individually against other players.</p>
-                <button onclick="openRegistration('solo')">
-                    REGISTER SOLO
-                </button>
-            </div>
-
-            <div class="mode">
-                <h3>Duo</h3>
-                <p>Register with one teammate and compete together.</p>
-                <button onclick="openRegistration('duo')">
-                    REGISTER DUO
-                </button>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- DETAILS -->
-    <section class="section details">
-
-        <div class="card">
-            <h3>Tournament Details</h3>
-
-            <p>
-                BattleGrid Free Fire Championship is an
-                esports tournament where players can compete
-                in Solo or Duo format.
-            </p>
-
-            <br>
-
-            <ul>
-                <li>Players must provide their correct Game UID.</li>
-                <li>In-game name must match the registered account.</li>
-                <li>Match information will be announced on BattleGrid.</li>
-                <li>Players must follow tournament rules.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>Schedule</h3>
-
-            <p><strong>Registration</strong><br>
-            Open Now</p>
-
-            <br>
-
-            <p><strong>Match Day</strong><br>
-            20 Sept 2026</p>
-
-            <br>
-
-            <p><strong>Reporting</strong><br>
-            30 minutes before match</p>
-        </div>
-
-    </section>
-
-    <!-- REGISTRATION -->
-    <section class="section" id="registration">
-
-        <div class="form-card">
-
-            <h2 id="formTitle">Solo Registration</h2>
-
-            <p class="form-subtitle">
-                Enter your Free Fire account details.
-            </p>
-
-            <form id="registrationForm">
-
-                <!-- PLAYER 1 -->
-                <div class="player-box">
-
-                    <h4>Player 1</h4>
-
-                    <label>Free Fire Game UID</label>
-                    <input
-                        type="text"
-                        id="uid1"
-                        placeholder="Enter Game UID"
-                        required
-                    >
-
-                    <label>In-Game Name (IGN)</label>
-                    <input
-                        type="text"
-                        id="name1"
-                        placeholder="Enter your game name"
-                        required
-                    >
-
-                </div>
-
-                <!-- PLAYER 2 -->
-                <div class="player-box" id="player2" style="display:none">
-
-                    <h4>Player 2 / Teammate</h4>
-
-                    <label>Free Fire Game UID</label>
-                    <input
-                        type="text"
-                        id="uid2"
-                        placeholder="Enter teammate UID"
-                    >
-
-                    <label>In-Game Name (IGN)</label>
-                    <input
-                        type="text"
-                        id="name2"
-                        placeholder="Enter teammate game name"
-                    >
-
-                </div>
-
-                <button class="submit" type="submit">
-                    CONFIRM REGISTRATION
-                </button>
-
-            </form>
-
-            <div class="success" id="success">
-
-                <h3>✓ Registration Successful</h3>
-
-                <p>Your BattleGrid Registration ID</p>
-
-                <div class="registration-id" id="registrationId"></div>
-
-                <p style="margin-top:12px">
-                    Save this ID for future tournament updates.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-
-<footer>
-    © 2026 BattleGrid • Free Fire Esports
-</footer>
-
-
-<script>
-
-let selectedMode = "solo";
-
-function openRegistration(mode){
-
-    selectedMode = mode;
-
-    const registration =
-        document.getElementById("registration");
-
-    const player2 =
-        document.getElementById("player2");
-
-    const title =
-        document.getElementById("formTitle");
-
-    registration.style.display = "block";
-
-    if(mode === "duo"){
-
-        title.innerText = "Duo Registration";
-        player2.style.display = "block";
-
-        document.getElementById("uid2").required = true;
-        document.getElementById("name2").required = true;
-
-    }else{
-
-        title.innerText = "Solo Registration";
-        player2.style.display = "none";
-
-        document.getElementById("uid2").required = false;
-        document.getElementById("name2").required = false;
-    }
-
-    registration.scrollIntoView({
-        behavior:"smooth"
-    });
-}
-
-
-document
-.getElementById("registrationForm")
-.addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-    // Generate temporary registration ID
-    const randomNumber =
-        Math.floor(1000 + Math.random() * 9000);
-
-    const registrationId =
-        "BG-FF-" + randomNumber;
-
-    document.getElementById("registrationId")
-        .innerText = registrationId;
-
-    document.getElementById("success")
-        .style.display = "block";
-
-    document.getElementById("registrationForm")
-        .style.display = "none";
-
-});
-
-</script>
-
-</body>
-</html>
+    font-size:11
