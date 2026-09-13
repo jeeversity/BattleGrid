@@ -4,421 +4,506 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BattleGrid - Free Fire</title>
+<title>BattleGrid | Free Fire</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
 
-body {
-    background: #090909;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
+body{
+    background:#080808;
+    color:white;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+body.modal-open{
+    overflow:hidden;
 }
 
-/* NAVBAR */
-
-.navbar {
-    height: 65px;
-    padding: 0 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #0d0d0d;
-    border-bottom: 1px solid #252525;
+.navbar{
+    height:65px;
+    padding:0 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#0d0d0d;
+    border-bottom:1px solid #252525;
 }
 
-.logo {
-    font-size: 23px;
-    font-weight: bold;
+.logo{
+    font-size:23px;
+    font-weight:bold;
 }
 
-.logo span {
-    color: #ff552f;
+.logo span{
+    color:#ff552f;
 }
 
-.back {
-    color: #999;
-    font-size: 14px;
+.back{
+    color:#999;
+    text-decoration:none;
+    font-size:14px;
 }
 
-/* MAIN */
-
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
 }
 
 /* BANNER */
 
-.banner {
-    height: 300px;
-    margin-top: 25px;
-    border-radius: 15px;
-    border: 1px solid #292929;
+.banner{
+    height:290px;
+    margin-top:25px;
+    border:1px solid #292929;
+    border-radius:15px;
+    overflow:hidden;
 
-    display: flex;
-    align-items: flex-end;
-    padding: 30px;
+    display:flex;
+    align-items:flex-end;
+    padding:30px;
 
     background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,0.95),
-            rgba(0,0,0,0.35)
-        ),
-        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200");
+    linear-gradient(90deg,
+    rgba(0,0,0,.94),
+    rgba(0,0,0,.35)),
+    url("https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1400");
 
-    background-size: cover;
-    background-position: center;
+    background-size:cover;
+    background-position:center;
 }
 
-.banner-content span {
-    background: #ff552f;
-    padding: 7px 11px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: bold;
+.badge{
+    background:#ff552f;
+    padding:7px 11px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:bold;
 }
 
-.banner h1 {
-    margin-top: 14px;
-    font-size: 38px;
+.banner h1{
+    margin-top:14px;
+    font-size:38px;
 }
 
-.banner p {
-    margin-top: 7px;
-    color: #bbb;
+.banner p{
+    color:#bbb;
+    margin-top:7px;
 }
 
 /* INFO */
 
-.info {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-top: 15px;
+.info{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:15px;
 }
 
-.info-box {
-    background: #111111;
-    border: 1px solid #292929;
-    border-radius: 10px;
-    padding: 17px;
+.info-box{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:10px;
+    padding:16px;
 }
 
-.info-box small {
-    color: #777;
-    display: block;
-    font-size: 11px;
-    margin-bottom: 7px;
+.info-box small{
+    display:block;
+    color:#777;
+    font-size:10px;
+    margin-bottom:7px;
 }
 
-.info-box strong {
-    font-size: 15px;
+.info-box strong{
+    font-size:15px;
 }
 
 /* SECTION */
 
-.section {
-    margin-top: 38px;
+.section{
+    margin-top:38px;
 }
 
-.section-title {
-    font-size: 25px;
-    margin-bottom: 5px;
+.mode-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
 }
 
-.section-subtitle {
-    color: #777;
-    font-size: 13px;
-    margin-bottom: 18px;
+.mode-header h2{
+    font-size:23px;
 }
 
-/* MATCH SECTION */
-
-.mode-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
+.mode-header p{
+    color:#777;
+    font-size:12px;
 }
 
-.mode-header h2 {
-    font-size: 22px;
+/* MATCH GRID */
+
+.matches{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
 }
 
-.mode-header p {
-    color: #777;
-    font-size: 12px;
+.match{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:12px;
+    padding:17px;
+    transition:.2s;
 }
 
-/* MATCHES */
-
-.matches {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+.match:hover{
+    border-color:#ff552f;
 }
 
-.match {
-    background: #111111;
-    border: 1px solid #292929;
-    border-radius: 11px;
-    padding: 16px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.match-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.match:hover {
-    border-color: #ff552f;
+.match-number{
+    color:#ff6545;
+    font-size:11px;
+    font-weight:bold;
 }
 
-.match-number {
-    color: #ff6545;
-    font-size: 11px;
-    font-weight: bold;
-    margin-bottom: 6px;
+.open{
+    color:#5ed477;
+    font-size:10px;
 }
 
-.match-time {
-    font-size: 18px;
-    font-weight: bold;
+/* MATCH DETAILS */
+
+.match-title{
+    font-size:19px;
+    font-weight:bold;
+    margin-top:8px;
 }
 
-.match-slots {
-    color: #777;
-    font-size: 12px;
-    margin-top: 5px;
+.match-details{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    margin-top:14px;
 }
 
-.match-right {
-    text-align: right;
+.detail{
+    background:#0a0a0a;
+    border:1px solid #202020;
+    border-radius:7px;
+    padding:9px;
 }
 
-.open {
-    color: #5fd37b;
-    font-size: 11px;
-    margin-bottom: 8px;
+.detail small{
+    display:block;
+    color:#666;
+    font-size:9px;
+    margin-bottom:4px;
 }
 
-.register {
-    background: #ff552f;
-    border: none;
-    color: white;
-    padding: 9px 13px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: bold;
-    cursor: pointer;
+.detail strong{
+    font-size:12px;
 }
 
-.register:hover {
-    background: #e94727;
+.match-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:14px;
+}
+
+.register{
+    border:none;
+    background:#ff552f;
+    color:white;
+    padding:10px 15px;
+    border-radius:7px;
+    font-size:11px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.register:hover{
+    background:#e94727;
+}
+
+.registered{
+    color:#999;
+    font-size:11px;
 }
 
 /* GAME DETAILS */
 
-.details {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 15px;
+.details{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:15px;
 }
 
-.card {
-    background: #111111;
-    border: 1px solid #292929;
-    border-radius: 12px;
-    padding: 20px;
+.card{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:12px;
+    padding:20px;
 }
 
-.card h3 {
-    margin-bottom: 14px;
+.card h3{
+    margin-bottom:13px;
 }
 
-.card p {
-    color: #999;
-    font-size: 14px;
-    line-height: 1.7;
+.card p{
+    color:#999;
+    font-size:14px;
+    line-height:1.7;
 }
 
-.card ul {
-    padding-left: 18px;
+.card ul{
+    padding-left:18px;
 }
 
-.card li {
-    color: #999;
-    font-size: 13px;
-    line-height: 2;
+.card li{
+    color:#999;
+    font-size:13px;
+    line-height:2;
 }
 
-/* REGISTRATION */
+/* ================= MODAL ================= */
 
-#registration {
-    display: none;
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.78);
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px;
 }
 
-.registration {
-    max-width: 600px;
-    margin: auto;
-    background: #111111;
-    border: 1px solid #292929;
-    border-radius: 13px;
-    padding: 22px;
+.modal.show{
+    display:flex;
 }
 
-.registration h2 {
-    font-size: 23px;
+.modal-box{
+    width:100%;
+    max-width:560px;
+    max-height:90vh;
+    overflow-y:auto;
+
+    background:#111;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:22px;
+
+    position:relative;
 }
 
-.registration-description {
-    color: #777;
-    font-size: 13px;
-    margin-top: 5px;
-    margin-bottom: 18px;
+.close{
+    position:absolute;
+    right:18px;
+    top:15px;
+
+    width:30px;
+    height:30px;
+
+    border:1px solid #333;
+    border-radius:50%;
+
+    background:#181818;
+    color:#aaa;
+
+    cursor:pointer;
+    font-size:17px;
 }
 
-.selected {
-    background: #090909;
-    border: 1px solid #292929;
-    border-radius: 8px;
-    padding: 13px;
-    margin-bottom: 16px;
-    color: #999;
-    font-size: 13px;
+.close:hover{
+    color:white;
+    border-color:#ff552f;
 }
 
-.selected strong {
-    color: #ff6545;
+.modal-title{
+    font-size:23px;
+    margin-bottom:5px;
 }
 
-.player {
-    background: #0b0b0b;
-    border: 1px solid #292929;
-    border-radius: 9px;
-    padding: 16px;
-    margin-bottom: 12px;
+.modal-subtitle{
+    color:#777;
+    font-size:13px;
+    margin-bottom:17px;
 }
 
-.player h4 {
-    color: #ff6545;
-    margin-bottom: 13px;
+/* SELECTED MATCH */
+
+.selected{
+    background:#0a0a0a;
+    border:1px solid #292929;
+    border-radius:9px;
+    padding:13px;
+    margin-bottom:15px;
 }
 
-label {
-    display: block;
-    color: #aaa;
-    font-size: 12px;
-    margin-bottom: 6px;
+.selected-title{
+    color:#ff6545;
+    font-weight:bold;
+    margin-bottom:9px;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    background: #070707;
-    border: 1px solid #333;
-    border-radius: 7px;
-    color: white;
-    outline: none;
-    margin-bottom: 13px;
+.selected-details{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
-input:focus {
-    border-color: #ff552f;
+.selected-details span{
+    color:#999;
+    font-size:11px;
 }
 
-.confirm {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 7px;
-    background: #ff552f;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+/* PLAYER */
+
+.player{
+    background:#0b0b0b;
+    border:1px solid #292929;
+    border-radius:9px;
+    padding:16px;
+    margin-bottom:12px;
+}
+
+.player h4{
+    color:#ff6545;
+    margin-bottom:13px;
+}
+
+label{
+    display:block;
+    color:#aaa;
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+
+    background:#070707;
+    border:1px solid #333;
+    border-radius:7px;
+
+    color:white;
+    outline:none;
+
+    margin-bottom:13px;
+}
+
+input:focus{
+    border-color:#ff552f;
+}
+
+.confirm{
+    width:100%;
+    padding:13px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#ff552f;
+    color:white;
+
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.confirm:hover{
+    background:#e94727;
 }
 
 /* SUCCESS */
 
-#success {
-    display: none;
-    text-align: center;
-    background: #0c160e;
-    border: 1px solid #29452e;
-    padding: 20px;
-    border-radius: 9px;
+.success{
+    display:none;
+    text-align:center;
+    padding:20px;
+    background:#0c160e;
+    border:1px solid #29452e;
+    border-radius:9px;
 }
 
-#success h3 {
-    color: #61d47b;
-    margin-bottom: 8px;
+.success h3{
+    color:#61d47b;
+    margin-bottom:9px;
 }
 
-#registrationId {
-    font-size: 21px;
-    font-weight: bold;
-    color: white;
-    margin-top: 8px;
+.reg-id{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:9px;
 }
 
 /* FOOTER */
 
-footer {
-    text-align: center;
-    color: #555;
-    font-size: 12px;
-    padding: 40px 0 25px;
+footer{
+    text-align:center;
+    color:#555;
+    font-size:12px;
+    padding:45px 0 25px;
 }
 
 /* MOBILE */
 
-@media (max-width: 700px) {
+@media(max-width:700px){
 
-    .container {
-        width: 92%;
+    .container{
+        width:92%;
     }
 
-    .banner {
-        height: 260px;
-        padding: 22px;
+    .banner{
+        height:260px;
+        padding:22px;
     }
 
-    .banner h1 {
-        font-size: 29px;
+    .banner h1{
+        font-size:29px;
     }
 
-    .info {
-        grid-template-columns: 1fr 1fr;
+    .info{
+        grid-template-columns:1fr 1fr;
     }
 
-    .matches {
-        grid-template-columns: 1fr;
+    .matches{
+        grid-template-columns:1fr;
     }
 
-    .details {
-        grid-template-columns: 1fr;
+    .details{
+        grid-template-columns:1fr;
+    }
+
+    .match-details{
+        grid-template-columns:1fr 1fr;
     }
 }
 </style>
 </head>
 
-
 <body>
 
 <!-- NAVBAR -->
 
-<div class="navbar">
+<nav class="navbar">
 
     <div class="logo">
         Battle<span>Grid</span>
@@ -428,21 +513,24 @@ footer {
         ← Back
     </a>
 
-</div>
+</nav>
 
 
 <div class="container">
 
-
 <!-- BANNER -->
 
-<div class="banner">
+<section class="banner">
 
-    <div class="banner-content">
+    <div>
 
-        <span>REGISTRATION OPEN</span>
+        <span class="badge">
+            REGISTRATION OPEN
+        </span>
 
-        <h1>Free Fire Esports</h1>
+        <h1>
+            Free Fire Esports
+        </h1>
 
         <p>
             BattleGrid Daily Competitive Matches
@@ -450,12 +538,12 @@ footer {
 
     </div>
 
-</div>
+</section>
 
 
-<!-- BASIC INFO -->
+<!-- QUICK INFO -->
 
-<div class="info">
+<section class="info">
 
     <div class="info-box">
         <small>DAILY MATCHES</small>
@@ -464,25 +552,27 @@ footer {
 
     <div class="info-box">
         <small>SOLO</small>
-        <strong>12 Matches</strong>
+        <strong>12 Games</strong>
     </div>
 
     <div class="info-box">
         <small>DUO</small>
-        <strong>12 Matches</strong>
+        <strong>12 Games</strong>
     </div>
 
     <div class="info-box">
         <small>STATUS</small>
-        <strong>Registration Open</strong>
+        <strong>Open</strong>
     </div>
 
-</div>
+</section>
 
 
-<!-- ================= SOLO ================= -->
+<!-- ==================================================
+     SOLO
+================================================== -->
 
-<div class="section">
+<section class="section">
 
     <div class="mode-header">
 
@@ -492,14 +582,19 @@ footer {
 
     </div>
 
-    <div class="matches" id="soloMatches"></div>
+    <div
+        class="matches"
+        id="soloMatches">
+    </div>
 
-</div>
+</section>
 
 
-<!-- ================= DUO ================= -->
+<!-- ==================================================
+     DUO
+================================================== -->
 
-<div class="section">
+<section class="section">
 
     <div class="mode-header">
 
@@ -509,21 +604,31 @@ footer {
 
     </div>
 
-    <div class="matches" id="duoMatches"></div>
+    <div
+        class="matches"
+        id="duoMatches">
+    </div>
 
-</div>
+</section>
 
 
-<!-- ================= GAME DETAILS ================= -->
+<!-- ==================================================
+     GAME DETAILS
+================================================== -->
 
-<div class="section">
+<section class="section">
 
-    <h2 class="section-title">
+    <h2 style="font-size:25px;">
         Game Details
     </h2>
 
-    <p class="section-subtitle">
-        Tournament information for players
+    <p style="
+        color:#777;
+        font-size:13px;
+        margin-top:5px;
+        margin-bottom:18px;
+    ">
+        Free Fire tournament information
     </p>
 
 
@@ -531,27 +636,23 @@ footer {
 
         <div class="card">
 
-            <h3>Free Fire Esports</h3>
+            <h3>
+                Free Fire Esports
+            </h3>
 
             <p>
-                BattleGrid Free Fire is a daily competitive
-                tournament where players can participate in
-                Solo or Duo matches.
+                BattleGrid provides daily competitive
+                Free Fire matches in Solo and Duo formats.
+                Players can select any available match
+                according to their preferred timing.
             </p>
 
             <br>
 
             <p>
-                Players can choose the match time according
-                to their availability and register directly
-                for that match.
-            </p>
-
-            <br>
-
-            <p>
-                Make sure your Game UID and In-Game Name
-                are entered correctly during registration.
+                After selecting a match, players need to
+                provide their Free Fire Game UID and
+                In-Game Name during registration.
             </p>
 
         </div>
@@ -559,7 +660,9 @@ footer {
 
         <div class="card">
 
-            <h3>Match Format</h3>
+            <h3>
+                Format
+            </h3>
 
             <ul>
 
@@ -567,13 +670,11 @@ footer {
 
                 <li>Mode: Solo / Duo</li>
 
-                <li>Solo Games: 12 Daily</li>
+                <li>Maps: Bermuda</li>
 
-                <li>Duo Games: 12 Daily</li>
+                <li>Daily Games: 24</li>
 
                 <li>Platform: Mobile</li>
-
-                <li>Registration: Online</li>
 
             </ul>
 
@@ -581,19 +682,26 @@ footer {
 
     </div>
 
-</div>
+</section>
 
 
-<!-- ================= RULES ================= -->
+<!-- ==================================================
+     RULES
+================================================== -->
 
-<div class="section">
+<section class="section">
 
-    <h2 class="section-title">
+    <h2 style="font-size:25px;">
         Tournament Rules
     </h2>
 
-    <p class="section-subtitle">
-        Read before registering
+    <p style="
+        color:#777;
+        font-size:13px;
+        margin-top:5px;
+        margin-bottom:18px;
+    ">
+        Please read before registration
     </p>
 
 
@@ -602,163 +710,30 @@ footer {
         <ul>
 
             <li>
-                Enter your correct Free Fire Game UID.
+                Correct Free Fire UID must be provided.
             </li>
 
             <li>
-                Enter the correct In-Game Name (IGN).
+                In-Game Name must be entered correctly.
             </li>
 
             <li>
-                Duo registration requires two players.
+                Duo requires two registered players.
             </li>
 
             <li>
-                Players must join their assigned match on time.
+                Players must join their assigned game on time.
             </li>
 
             <li>
-                Players must follow BattleGrid tournament instructions.
-            </li>
-
-            <li>
-                Match-specific information will be provided by BattleGrid.
+                Players must follow BattleGrid match instructions.
             </li>
 
         </ul>
 
     </div>
 
-</div>
-
-
-<!-- ================= REGISTRATION ================= -->
-
-<div class="section" id="registration">
-
-    <div class="registration">
-
-        <h2 id="registrationTitle">
-            Solo Registration
-        </h2>
-
-        <p class="registration-description">
-            Enter your Free Fire account details.
-        </p>
-
-
-        <div class="selected">
-
-            Selected Match:
-
-            <strong id="selectedMatch">
-                -
-            </strong>
-
-        </div>
-
-
-        <form id="registrationForm">
-
-
-            <!-- PLAYER 1 -->
-
-            <div class="player">
-
-                <h4>Player 1</h4>
-
-                <label>
-                    Free Fire Game UID
-                </label>
-
-                <input
-                    id="uid1"
-                    type="text"
-                    placeholder="Enter Game UID"
-                    required
-                >
-
-                <label>
-                    In-Game Name
-                </label>
-
-                <input
-                    id="name1"
-                    type="text"
-                    placeholder="Enter Game Name"
-                    required
-                >
-
-            </div>
-
-
-            <!-- PLAYER 2 -->
-
-            <div
-                class="player"
-                id="player2"
-                style="display:none;"
-            >
-
-                <h4>Player 2 / Teammate</h4>
-
-                <label>
-                    Free Fire Game UID
-                </label>
-
-                <input
-                    id="uid2"
-                    type="text"
-                    placeholder="Enter Teammate UID"
-                >
-
-                <label>
-                    In-Game Name
-                </label>
-
-                <input
-                    id="name2"
-                    type="text"
-                    placeholder="Enter Teammate Game Name"
-                >
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="confirm"
-            >
-                CONFIRM REGISTRATION
-            </button>
-
-        </form>
-
-
-        <!-- SUCCESS -->
-
-        <div id="success">
-
-            <h3>
-                Registration Successful
-            </h3>
-
-            <p>
-                Your BattleGrid Registration ID
-            </p>
-
-            <div id="registrationId"></div>
-
-            <p style="color:#777;margin-top:8px;">
-                Save this ID for your tournament.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
+</section>
 
 </div>
 
@@ -768,14 +743,194 @@ footer {
 </footer>
 
 
+<!-- ==================================================
+     REGISTRATION MODAL
+================================================== -->
+
+<div
+    class="modal"
+    id="registrationModal"
+>
+
+    <div class="modal-box">
+
+        <button
+            class="close"
+            onclick="closeRegistration()"
+        >
+            ×
+        </button>
+
+
+        <div id="registrationContent">
+
+            <h2
+                class="modal-title"
+                id="modalTitle"
+            >
+                Solo Registration
+            </h2>
+
+            <p class="modal-subtitle">
+                Enter your Free Fire account details
+            </p>
+
+
+            <!-- SELECTED MATCH -->
+
+            <div class="selected">
+
+                <div
+                    class="selected-title"
+                    id="selectedTitle"
+                >
+                    SOLO #01
+                </div>
+
+                <div class="selected-details">
+
+                    <span id="selectedMap">
+                        🗺 Bermuda
+                    </span>
+
+                    <span id="selectedTime">
+                        🕐 10:00 AM
+                    </span>
+
+                    <span id="selectedPrize">
+                        🏆 ₹500
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <form id="registrationForm">
+
+                <!-- PLAYER 1 -->
+
+                <div class="player">
+
+                    <h4>
+                        Player 1
+                    </h4>
+
+                    <label>
+                        Free Fire Game UID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="uid1"
+                        placeholder="Enter Game UID"
+                        required
+                    >
+
+                    <label>
+                        In-Game Name (IGN)
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name1"
+                        placeholder="Enter In-Game Name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PLAYER 2 -->
+
+                <div
+                    class="player"
+                    id="player2"
+                    style="display:none;"
+                >
+
+                    <h4>
+                        Player 2 / Teammate
+                    </h4>
+
+                    <label>
+                        Free Fire Game UID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="uid2"
+                        placeholder="Enter Teammate UID"
+                    >
+
+                    <label>
+                        In-Game Name (IGN)
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name2"
+                        placeholder="Enter Teammate IGN"
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="confirm"
+                >
+                    CONFIRM REGISTRATION
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- SUCCESS -->
+
+        <div
+            class="success"
+            id="success"
+        >
+
+            <h3>
+                ✓ Registration Successful
+            </h3>
+
+            <p>
+                Your Registration ID
+            </p>
+
+            <div
+                class="reg-id"
+                id="registrationId"
+            >
+            </div>
+
+            <p style="
+                color:#777;
+                margin-top:10px;
+                font-size:12px;
+            ">
+                Save this ID for your match.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
 
-/* ===============================
-   MATCH TIMES
-================================ */
+/* =====================================================
+   MATCH DATA
+===================================================== */
 
-var matchTimes = [
+var times = [
     "10:00 AM",
     "11:00 AM",
     "12:00 PM",
@@ -791,66 +946,151 @@ var matchTimes = [
 ];
 
 
-/* ===============================
-   CREATE MATCH CARD
-================================ */
+/* =====================================================
+   CREATE MATCH
+===================================================== */
 
-function makeMatch(mode, number, time) {
+function createMatch(mode, number, time){
 
     var card = document.createElement("div");
 
     card.className = "match";
 
-    var left = document.createElement("div");
 
-    left.innerHTML =
-        '<div class="match-number">' +
-        mode.toUpperCase() + ' #' + number +
-        '</div>' +
+    var maxPlayers;
 
-        '<div class="match-time">' +
-        time +
-        '</div>' +
+    var registered;
 
-        '<div class="match-slots">' +
-        (mode === "solo" ? "32 Players" : "16 Teams") +
-        '</div>';
+    if(mode === "solo"){
 
+        maxPlayers = 48;
 
-    var right = document.createElement("div");
+        registered = 17;
 
-    right.className = "match-right";
+    }else{
 
-    right.innerHTML =
-        '<div class="open">● Open</div>' +
-        '<button class="register">REGISTER</button>';
+        maxPlayers = 24;
+
+        registered = 9;
+
+    }
 
 
-    var button = right.querySelector(".register");
+    var prize = "₹500";
 
-    button.onclick = function() {
+    var entry = "₹20";
+
+
+    card.innerHTML = `
+
+        <div class="match-top">
+
+            <div class="match-number">
+                ${mode.toUpperCase()} #${number}
+            </div>
+
+            <div class="open">
+                ● REGISTRATION OPEN
+            </div>
+
+        </div>
+
+
+        <div class="match-title">
+            ${time}
+        </div>
+
+
+        <div class="match-details">
+
+            <div class="detail">
+
+                <small>MAP</small>
+
+                <strong>
+                    Bermuda
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>TIME</small>
+
+                <strong>
+                    ${time}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>REGISTERED</small>
+
+                <strong>
+                    ${registered}/${maxPlayers}
+                    ${mode === "solo" ? " Players" : " Teams"}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>PRIZE POOL</small>
+
+                <strong>
+                    ${prize}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="match-bottom">
+
+            <div class="registered">
+                Entry: ${entry}
+            </div>
+
+            <button class="register">
+                REGISTER
+            </button>
+
+        </div>
+
+    `;
+
+
+    card
+    .querySelector(".register")
+    .onclick = function(){
 
         openRegistration(
             mode,
             number,
-            time
+            time,
+            registered,
+            maxPlayers,
+            prize,
+            entry
         );
 
     };
 
 
-    card.appendChild(left);
-    card.appendChild(right);
-
     return card;
 }
 
 
-/* ===============================
-   CREATE ALL MATCHES
-================================ */
+/* =====================================================
+   LOAD 12 SOLO + 12 DUO
+===================================================== */
 
-function loadMatches() {
+function loadMatches(){
 
     var solo =
         document.getElementById("soloMatches");
@@ -859,72 +1099,115 @@ function loadMatches() {
         document.getElementById("duoMatches");
 
 
-    for (var i = 0; i < matchTimes.length; i++) {
+    for(
+        var i = 0;
+        i < times.length;
+        i++
+    ){
 
         var number = i + 1;
 
+
         solo.appendChild(
-            makeMatch(
+            createMatch(
                 "solo",
                 number,
-                matchTimes[i]
+                times[i]
             )
         );
 
+
         duo.appendChild(
-            makeMatch(
+            createMatch(
                 "duo",
                 number,
-                matchTimes[i]
+                times[i]
             )
         );
 
     }
+
 }
 
 
-/* ===============================
-   OPEN REGISTRATION
-================================ */
+/* =====================================================
+   OPEN REGISTRATION MODAL
+===================================================== */
 
 function openRegistration(
     mode,
     number,
-    time
-) {
+    time,
+    registered,
+    maxPlayers,
+    prize,
+    entry
+){
 
-    var section =
-        document.getElementById("registration");
+    var modal =
+        document.getElementById(
+            "registrationModal"
+        );
+
 
     var title =
-        document.getElementById("registrationTitle");
+        document.getElementById(
+            "modalTitle"
+        );
 
-    var selected =
-        document.getElementById("selectedMatch");
+
+    var selectedTitle =
+        document.getElementById(
+            "selectedTitle"
+        );
+
+
+    var selectedMap =
+        document.getElementById(
+            "selectedMap"
+        );
+
+
+    var selectedTime =
+        document.getElementById(
+            "selectedTime"
+        );
+
+
+    var selectedPrize =
+        document.getElementById(
+            "selectedPrize"
+        );
+
 
     var player2 =
-        document.getElementById("player2");
+        document.getElementById(
+            "player2"
+        );
+
 
     var uid2 =
-        document.getElementById("uid2");
+        document.getElementById(
+            "uid2"
+        );
+
 
     var name2 =
-        document.getElementById("name2");
+        document.getElementById(
+            "name2"
+        );
 
 
-    section.style.display = "block";
-
-
-    if (mode === "solo") {
+    if(mode === "solo"){
 
         title.innerText =
             "Solo Registration";
 
-        selected.innerText =
-            "Solo #" + number +
-            " • " + time;
+        selectedTitle.innerText =
+            "SOLO #" + number;
 
-        player2.style.display = "none";
+        player2.style.display =
+            "none";
 
         uid2.required = false;
         name2.required = false;
@@ -932,16 +1215,16 @@ function openRegistration(
     }
 
 
-    if (mode === "duo") {
+    if(mode === "duo"){
 
         title.innerText =
             "Duo Registration";
 
-        selected.innerText =
-            "Duo #" + number +
-            " • " + time;
+        selectedTitle.innerText =
+            "DUO #" + number;
 
-        player2.style.display = "block";
+        player2.style.display =
+            "block";
 
         uid2.required = true;
         name2.required = true;
@@ -949,53 +1232,121 @@ function openRegistration(
     }
 
 
-    section.scrollIntoView({
-        behavior: "smooth"
-    });
+    selectedMap.innerText =
+        "🗺 Bermuda";
+
+
+    selectedTime.innerText =
+        "🕐 " + time;
+
+
+    selectedPrize.innerText =
+        "🏆 " + prize;
+
+
+    modal.classList.add("show");
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
 }
 
 
-/* ===============================
-   REGISTRATION SUBMIT
-================================ */
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeRegistration(){
+
+    document
+    .getElementById(
+        "registrationModal"
+    )
+    .classList.remove("show");
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+/* =====================================================
+   CLICK OUTSIDE MODAL
+===================================================== */
+
+document
+.getElementById("registrationModal")
+.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target === this){
+
+            closeRegistration();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   FORM SUBMIT
+===================================================== */
 
 document
 .getElementById("registrationForm")
-.addEventListener("submit", function(event) {
+.addEventListener(
+    "submit",
+    function(event){
 
-    event.preventDefault();
-
-
-    var randomNumber =
-        Math.floor(
-            1000 + Math.random() * 9000
-        );
+        event.preventDefault();
 
 
-    var registrationID =
-        "BG-FF-" + randomNumber;
+        var random =
+            Math.floor(
+                1000 +
+                Math.random() * 9000
+            );
 
 
-    document.getElementById(
-        "registrationId"
-    ).innerText = registrationID;
+        var registrationID =
+            "BG-FF-" + random;
 
 
-    document.getElementById(
-        "success"
-    ).style.display = "block";
+        document
+        .getElementById(
+            "registrationId"
+        )
+        .innerText =
+            registrationID;
 
 
-    document.getElementById(
-        "registrationForm"
-    ).style.display = "none";
+        document
+        .getElementById(
+            "registrationContent"
+        )
+        .style.display =
+            "none";
 
-});
+
+        document
+        .getElementById(
+            "success"
+        )
+        .style.display =
+            "block";
+
+    }
+);
 
 
-/* ===============================
+/* =====================================================
    START
-================================ */
+===================================================== */
 
 loadMatches();
 
